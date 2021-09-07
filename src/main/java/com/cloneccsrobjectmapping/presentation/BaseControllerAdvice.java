@@ -14,6 +14,6 @@ public class BaseControllerAdvice {
         binder.setAllowedFields(""); //どのフィールドも許可しない
 
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
-        binder.registerCustomEditor(Covered.class, new EditorForCovered());
+//        binder.registerCustomEditor(Covered.class, new EditorForCovered());
     }
 }
