@@ -37,8 +37,12 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2:1.4.197'
+    runtimeOnly("org.flywaydb:flyway-core")
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
+    implementation 'com.google.guava:guava:23.0'
+    implementation("io.springfox:springfox-swagger2:2.9.2")
+    runtimeOnly("io.springfox:springfox-swagger-ui:2.9.2")
     testImplementation('com.github.irof:jig-erd:latest.release')
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group: 'org.junit.vintage')
