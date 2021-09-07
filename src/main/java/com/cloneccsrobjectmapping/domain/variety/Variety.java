@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain;
+package com.cloneccsrobjectmapping.domain.variety;
 
 import lombok.NonNull;
 
@@ -8,18 +8,17 @@ public class Variety {
     VarietyName varietyName;
 
     @NonNull
-    VarietyNumber varietyNumber = VarietyNumber.generate();
+    VarietyNumber varietyNumber = VarietyNumber.numbering();
 
-    public Variety(VarietyName varietyName, VarietyIdentifier varietyIdentifier) {
+    public Variety(VarietyName varietyName) {
         this.varietyName   = varietyName;
-        this.varietyNumber = varietyIdentifier;
     }
 
     public VarietyName varietyName() {
         return varietyName;
     }
 
-    public VarietyIdentifier varietyIdentifier() {
+    public VarietyNumber varietyNumber() {
         return varietyNumber;
     }
 
