@@ -1,6 +1,7 @@
 package com.cloneccsrobjectmapping.domain.specification;
 
 import com.cloneccsrobjectmapping.domain.feature.Features;
+import com.cloneccsrobjectmapping.domain.row.Rows;
 
 public class Specification {
     DateOfSeed dateOfSeed;
