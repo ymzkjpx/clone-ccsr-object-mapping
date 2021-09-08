@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.variety;
+package com.cloneccsrobjectmapping.domain.model.variety;
 
 import java.util.List;
 

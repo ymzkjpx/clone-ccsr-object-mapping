@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.row;
+package com.cloneccsrobjectmapping.domain.model.row;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.specification;
+package com.cloneccsrobjectmapping.domain.model.specification;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;

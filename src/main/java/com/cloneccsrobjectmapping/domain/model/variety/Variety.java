@@ -1,6 +1,7 @@
-package com.cloneccsrobjectmapping.domain.variety;
+package com.cloneccsrobjectmapping.domain.model.variety;
 
-import lombok.NonNull;
+
+import org.springframework.lang.NonNull;
 
 public class Variety {
 

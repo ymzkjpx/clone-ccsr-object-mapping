@@ -1,6 +1,4 @@
-package com.cloneccsrobjectmapping.domain.variety;
-
-import com.cloneccsrobjectmapping.domain.type.Identify;
+package com.cloneccsrobjectmapping.domain.model.variety;
 
 public class VarietyNumber {
     String value;
@@ -16,9 +14,9 @@ public class VarietyNumber {
         return value;
     }
 
-    static String format = "SP-%s-%s";
+    static String format = "VA-%s";
     public static VarietyNumber numbering(){
-        String result = new Identify(format).generate();
+        String result = new VarietyNumberManager(format).nextNumber();
         return new VarietyNumber(result);
     }
 

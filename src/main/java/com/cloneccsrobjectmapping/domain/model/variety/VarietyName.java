@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.variety;
+package com.cloneccsrobjectmapping.domain.model.variety;
 
 public class VarietyName {
     String value;

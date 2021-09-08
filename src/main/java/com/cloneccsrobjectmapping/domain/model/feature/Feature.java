@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.feature;
+package com.cloneccsrobjectmapping.domain.model.feature;
 
 public enum Feature {
     専用培養土,

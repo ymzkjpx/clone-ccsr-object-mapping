@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.specification;
+package com.cloneccsrobjectmapping.domain.model.specification;
 
 public enum CaseType {
     木製

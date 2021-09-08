@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.feature;
+package com.cloneccsrobjectmapping.domain.model.feature;
 
 import java.util.List;
 
