@@ -16,7 +16,7 @@ public class Specification {
     @NotNull(message = "NULL are forbidden.")
     CaseType caseType;
 
-    Covered covered = Covered.WITHOUT;
+    Covered covered = Covered.NON_COVERED;
 
     @NotNull(message = "NULL are forbidden.")
     Features features;
