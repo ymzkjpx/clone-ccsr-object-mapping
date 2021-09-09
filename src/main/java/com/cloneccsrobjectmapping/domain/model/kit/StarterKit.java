@@ -5,15 +5,14 @@ import com.cloneccsrobjectmapping.domain.model.specification.Specification;
 public class StarterKit {
     StarterKitNumber starterKitNumber;
     Specification specification;
-    int rowOrder;
 
     @Deprecated
-    StarterKit(){}
+    StarterKit() {
+    }
 
-    public StarterKit(Specification specification, int rowOrder) {
-        this.starterKitNumber = StarterKitNumber.numbering();
+    private StarterKit(StarterKitNumber starterKitNumber, Specification specification) {
+        this.starterKitNumber = starterKitNumber;
         this.specification = specification;
-        this.rowOrder      = rowOrder;
     }
 
     public StarterKitNumber starterKitNumber() {
@@ -24,14 +23,15 @@ public class StarterKit {
         return specification;
     }
 
-    public int rowOrder() {
-        return rowOrder;
+    public static StarterKit form(Specification other) {
+        return new StarterKit(StarterKitNumber.numbering(), other);
     }
-
 
     @Override
     public String toString() {
-        return "StarterKit{" + "starterKitNumber=" + starterKitNumber + ", specification=" + specification +
-               ", rowOrder=" + rowOrder + '}';
+        return "StarterKit{" +
+                "starterKitNumber=" + starterKitNumber +
+                ", specification=" + specification +
+                '}';
     }
 }
