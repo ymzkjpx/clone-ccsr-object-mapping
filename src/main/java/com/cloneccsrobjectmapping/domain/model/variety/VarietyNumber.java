@@ -1,6 +1,9 @@
 package com.cloneccsrobjectmapping.domain.model.variety;
 
+import javax.validation.constraints.Pattern;
+
 public class VarietyNumber {
+    @Pattern(regexp = "^VA-[A-Z0-9]{4,}", message = "Invalid Identifier")
     String value;
 
     @Deprecated

@@ -1,6 +1,10 @@
 package com.cloneccsrobjectmapping.domain.model.specification;
 
 public enum Covered {
-    有り
-    ,無し
+    WITH
+    ,WITHOUT;
+
+    public boolean isCovered(){
+        return this.equals(WITH);
+    }
 }

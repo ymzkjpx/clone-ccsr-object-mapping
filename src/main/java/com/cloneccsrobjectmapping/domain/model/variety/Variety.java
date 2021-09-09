@@ -3,16 +3,18 @@ package com.cloneccsrobjectmapping.domain.model.variety;
 
 import org.springframework.lang.NonNull;
 
+import javax.validation.Valid;
+
 public class Variety {
 
-    @NonNull
+    @Valid
     VarietyName varietyName;
 
     @NonNull
     VarietyNumber varietyNumber = VarietyNumber.numbering();
 
     public Variety(VarietyName varietyName) {
-        this.varietyName   = varietyName;
+        this.varietyName = varietyName;
     }
 
     public VarietyName varietyName() {

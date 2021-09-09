@@ -1,7 +1,5 @@
 package com.cloneccsrobjectmapping.domain.model.kit;
 
-import com.cloneccsrobjectmapping.domain.type.Identify;
-
 import javax.validation.constraints.Pattern;
 
 public class StarterKitNumber {

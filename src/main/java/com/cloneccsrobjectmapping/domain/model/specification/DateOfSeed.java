@@ -1,25 +1,36 @@
 package com.cloneccsrobjectmapping.domain.model.specification;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import javax.validation.constraints.NotNull;
 
 public class DateOfSeed {
-    LocalDateTime value;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @NotNull(message = "NULL are forbidden.")
+    LocalDate value;
 
     @Deprecated
-    DateOfSeed(){}
+    DateOfSeed() {
+    }
 
-    public DateOfSeed(LocalDateTime value) {
+    public DateOfSeed(LocalDate value) {
         this.value = value;
     }
 
-    public LocalDateTime value() {
+    public LocalDate value(){
         return value;
     }
 
-    public String show(){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyy/MM/dd");
-        return simpleDateFormat.format(value);
+    public DateOfSeed today() {
+        return new DateOfSeed(LocalDate.now());
+    }
+
+    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    public String when() {
+        return value.format(formatter);
     }
 
     @Override

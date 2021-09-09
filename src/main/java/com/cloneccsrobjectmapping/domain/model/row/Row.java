@@ -2,19 +2,24 @@ package com.cloneccsrobjectmapping.domain.model.row;
 
 import com.cloneccsrobjectmapping.domain.model.variety.Variety;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import org.hibernate.validator.constraints.Range;
+
 import javax.validation.constraints.NotNull;
 
 public class Row {
-    @NotNull(message = "Not allowed to be null.")
+    @NotNull(message = "NULL are forbidden.")
     Variety variety;
 
-    @Min(value = 1, message = "Between 1~20")
-    @Max(value = 20, message = "Between 1~20")
+    @Range(min = 1, max = 20, message = "Tolerance is between 1~20.")
     int seedsPerCell;
 
-    Row() {}
+    /**
+     * RowクラスはRowによってのみ管理される.
+     * この仕様はめっちゃ伝わりづらいな.
+     * IMO: Row => Cellに名称変更.
+     */
+    Row() {
+    }
 
     public Variety variety() {
         return variety;

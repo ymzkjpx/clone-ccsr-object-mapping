@@ -1,16 +1,15 @@
 package com.cloneccsrobjectmapping.domain.model.row;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Rows {
-    @NotNull @Min(value = 1, message = "Between 1~3")
-    @Max(value = 1, message = "Between 1~3")
+    @NotNull
+    @Size(min = 1, max = 3, message = "Tolerance is between {min}~{max}")
     List<@Valid Row> list;
 
     @Deprecated
@@ -30,13 +29,9 @@ public class Rows {
         return new Rows(new ArrayList<>(list));
     }
 
-    public Rows removeRow(int index){
+    public Rows removeRow(int index) {
         list.remove(index);
         return new Rows(new ArrayList<>(list));
-    }
-
-    private boolean canRemove(int index){
-
     }
 
     @Override
