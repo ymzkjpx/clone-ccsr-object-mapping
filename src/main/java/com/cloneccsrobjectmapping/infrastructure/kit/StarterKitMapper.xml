@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cloneccsrobjectmapping.infrastructure.kit.StarterKitMapper">
-    <resultMap id="StarterKitMapping" type="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
 
-    </resultMap>
-    <select id="findAllKits" resultMap="StarterKitMapping">
+
+    <select id="findAllSingle" resultType="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
         SELECT
-             キット.キット番号 AS "StarterKitNumber.value"
+            キット.キット番号 AS "starterKitNumber.value"
+          , キット.種まき日 AS "dateOfSeed.value"
         FROM
-            商品.栽培キット キット;
+            商品.栽培キット キット
     </select>
 </mapper>

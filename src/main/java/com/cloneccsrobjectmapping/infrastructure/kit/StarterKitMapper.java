@@ -1,7 +1,6 @@
 package com.cloneccsrobjectmapping.infrastructure.kit;
 
 import com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit;
-import com.cloneccsrobjectmapping.domain.model.kit.StarterKit;
 
 import org.apache.ibatis.annotations.Mapper;
 

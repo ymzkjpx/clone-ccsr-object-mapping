@@ -5,24 +5,22 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>RowSize</th>
-        <th>Covered</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>1</td>
-        <td>Alice Kit</td>
-        <td>1</td>
-        <td>Covered</td>
-    </tr>
-    </tbody>
-</table>
+<article>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>種まき日</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="each:${kitList.asList()}">
+            <td th:text="${each.starterKitNumber.value()}"></td>
+            <td th:text="${each.dateOfSeed.when()}"></td>
+        </tr>
+        </tbody>
+    </table>
+</article>
 
 </body>
 </html>
