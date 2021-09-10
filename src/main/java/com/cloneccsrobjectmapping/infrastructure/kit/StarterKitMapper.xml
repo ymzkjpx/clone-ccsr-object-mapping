@@ -3,12 +3,27 @@
 
 <mapper namespace="com.cloneccsrobjectmapping.infrastructure.kit.StarterKitMapper">
 
+    <resultMap id="singleKit" type="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
+        <collection property="varieties.list" ofType="com.cloneccsrobjectmapping.domain.model.variety.Variety" column="starterKitNumber.value" select="v"/>
+    </resultMap>
 
-    <select id="findAllSingle" resultType="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
+    <select id="findAllSingle" resultMap="singleKit">
         SELECT
             キット.キット番号 AS "starterKitNumber.value"
           , キット.種まき日 AS "dateOfSeed.value"
         FROM
             商品.栽培キット キット
+    </select>
+
+    <select id="v" resultType="com.cloneccsrobjectmapping.domain.model.variety.Variety">
+        SELECT
+             品種.品種番号 AS "varietyNumber.value"
+            , 品種.名前 AS "varietyName.value"
+        FROM
+            商品.列 列
+                INNER JOIN 商品.品種 品種 ON
+                列.品種番号 = 品種.品種番号
+        WHERE
+            列.キット番号 = #{value}
     </select>
 </mapper>

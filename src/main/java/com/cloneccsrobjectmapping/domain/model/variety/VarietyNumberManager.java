@@ -6,7 +6,8 @@ public class VarietyNumberManager {
     String format;
 
     @Deprecated
-    VarietyNumberManager() {}
+    VarietyNumberManager() {
+    }
 
     public VarietyNumberManager(String format) {
         this.format = format;
@@ -14,11 +15,10 @@ public class VarietyNumberManager {
 
     public String nextNumber() {
         String uuid = UUID.randomUUID()
-                          .toString()
-                          .toUpperCase();
+                .toString()
+                .toUpperCase();
         String[] elements = uuid.substring(4, 28)
-                                .split("-");
-        String textId = String.join(elements[0], "-", elements[1]);
-        return String.format(format, textId);
+                .split("-");
+        return String.format(format, elements[0], elements[1], elements[3], elements[4]);
     }
 }

@@ -13,6 +13,9 @@ public class Variety {
     @NonNull
     VarietyNumber varietyNumber = VarietyNumber.numbering();
 
+    @Deprecated
+    Variety(){}
+
     public Variety(VarietyName varietyName) {
         this.varietyName = varietyName;
     }
