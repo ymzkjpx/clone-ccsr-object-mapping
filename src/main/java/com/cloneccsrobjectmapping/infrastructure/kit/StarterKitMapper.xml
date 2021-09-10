@@ -5,7 +5,7 @@
 
     <resultMap id="singleKit" type="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
         <id property="starterKitNumber.value" column="starterKitNumber.value" />
-        <collection property="varieties.list" ofType="com.cloneccsrobjectmapping.domain.model.variety.Variety" column="starterKitNumber.value" select="v"/>
+        <collection property="rows.list" ofType="com.cloneccsrobjectmapping.domain.model.row.Row" column="starterKitNumber.value" select="com.cloneccsrobjectmapping.infrastructure.row.RowMapper.row"/>
     </resultMap>
 
     <select id="findAllSingle" resultMap="singleKit">

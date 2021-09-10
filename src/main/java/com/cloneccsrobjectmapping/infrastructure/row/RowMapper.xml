@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cloneccsrobjectmapping.infrastructure.row.RowMapper">
+    <select id="row" resultType="com.cloneccsrobjectmapping.domain.model.row.Row">
+        SELECT
+            品種.品種番号 AS "variety.varietyNumber.value"
+          , 品種.名前 AS "variety.varietyName.value"
+          , 列.種の数 AS "seedsPerCell"
+        FROM
+            商品.列 列
+                INNER JOIN 商品.品種 品種
+                    ON 列.品種番号 = 品種.品種番号
+        WHERE 列.キット番号 = #{value}
+    </select>
+</mapper>
