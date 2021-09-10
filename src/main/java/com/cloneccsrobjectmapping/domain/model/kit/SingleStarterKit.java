@@ -11,10 +11,10 @@ public class SingleStarterKit {
     @Deprecated
     SingleStarterKit(){}
 
-    public SingleStarterKit(StarterKitNumber starterKitNumber, DateOfSeed dateOfSeed, Varieties varieties) {
+    public SingleStarterKit(StarterKitNumber starterKitNumber, DateOfSeed dateOfSeed) {
         this.starterKitNumber = starterKitNumber;
         this.dateOfSeed = dateOfSeed;
-        this.varieties = varieties;
+        this.varieties = null;
     }
 
     public StarterKitNumber starterKitNumber() {
@@ -25,16 +25,4 @@ public class SingleStarterKit {
         return dateOfSeed;
     }
 
-    public Varieties variety() {
-        return varieties;
-    }
-
-    @Override
-    public String toString() {
-        return "SingleStarterKit{" +
-                "starterKitNumber=" + starterKitNumber +
-                ", dateOfSeed=" + dateOfSeed +
-                ", variety=" + varieties +
-                '}';
-    }
 }

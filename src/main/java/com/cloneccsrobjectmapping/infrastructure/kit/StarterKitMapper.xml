@@ -4,6 +4,7 @@
 <mapper namespace="com.cloneccsrobjectmapping.infrastructure.kit.StarterKitMapper">
 
     <resultMap id="singleKit" type="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
+        <id property="starterKitNumber.value" column="starterKitNumber.value" />
         <collection property="varieties.list" ofType="com.cloneccsrobjectmapping.domain.model.variety.Variety" column="starterKitNumber.value" select="v"/>
     </resultMap>
 
