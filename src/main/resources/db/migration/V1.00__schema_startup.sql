@@ -4,7 +4,7 @@ CREATE SCHEMA 商品;
 -- 区分
 CREATE TABLE 商品.カバー
 (
-    カバー CHAR(1) PRIMARY KEY
+    カバー CHAR(11) PRIMARY KEY
 );
 CREATE TABLE 商品.素材
 (
@@ -27,7 +27,7 @@ CREATE TABLE 商品.栽培キット
 (
     キット番号 CHARACTER (13) PRIMARY KEY,
     種まき日 DATE NOT NULL,
-    カバー CHAR (1) NOT NULL REFERENCES 商品.カバー,
+    カバー CHAR (11) NOT NULL REFERENCES 商品.カバー,
     素材 VARCHAR (6) NOT NULL REFERENCES 商品.素材
 );
 CREATE TABLE 商品.キットの特徴

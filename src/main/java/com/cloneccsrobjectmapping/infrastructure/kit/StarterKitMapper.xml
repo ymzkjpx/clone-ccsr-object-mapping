@@ -4,27 +4,21 @@
 <mapper namespace="com.cloneccsrobjectmapping.infrastructure.kit.StarterKitMapper">
 
     <resultMap id="singleKit" type="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
-        <id property="starterKitNumber.value" column="starterKitNumber.value" />
-        <collection property="rows.list" ofType="com.cloneccsrobjectmapping.domain.model.row.Row" column="starterKitNumber.value" select="com.cloneccsrobjectmapping.infrastructure.row.RowMapper.row"/>
+        <id property="starterKitNumber.value" column="starterKitNumber.value"/>
+        <collection property="rows.list" ofType="com.cloneccsrobjectmapping.domain.model.row.Row"
+                    column="starterKitNumber.value"
+                    select="com.cloneccsrobjectmapping.infrastructure.row.RowMapper.rows"/>
+        <collection property="features.list" ofType="com.cloneccsrobjectmapping.domain.model.feature.Feature"
+                    column="starterKitNumber.value"
+                    select="com.cloneccsrobjectmapping.infrastructure.feature.FeatureMapper.features"/>
     </resultMap>
 
     <select id="findAllSingle" resultMap="singleKit">
         SELECT
             キット.キット番号 AS "starterKitNumber.value"
           , キット.種まき日 AS "dateOfSeed.value"
+    , キット.カバー AS "covered"
         FROM
             商品.栽培キット キット
-    </select>
-
-    <select id="v" resultType="com.cloneccsrobjectmapping.domain.model.variety.Variety">
-        SELECT
-             品種.品種番号 AS "varietyNumber.value"
-            , 品種.名前 AS "varietyName.value"
-        FROM
-            商品.列 列
-                INNER JOIN 商品.品種 品種 ON
-                列.品種番号 = 品種.品種番号
-        WHERE
-            列.キット番号 = #{value}
     </select>
 </mapper>

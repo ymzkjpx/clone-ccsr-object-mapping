@@ -1,8 +1,8 @@
 -- 区分
 INSERT INTO 商品.カバー
 (カバー)
-VALUES ('有'),
-       ('無')
+VALUES ('COVERED'),
+       ('NON_COVERED')
 ;
 INSERT INTO 商品.素材
 (素材)
