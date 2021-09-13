@@ -25,6 +25,14 @@ public class StarterKitList {
         return new StarterKitList(Collections.emptyList());
     }
 
+    public String count(){
+        return new KitListSize(list.size()).show();
+    }
+
+    public int size(){
+        return list.size();
+    }
+
     @Override
     public String toString() {
         return "StarterKitList{" +

@@ -12,6 +12,9 @@ public class StarterKitQueryService {
         this.starterKitRepository = starterKitRepository;
     }
 
+    /**
+     * 栽培キット一覧を取得する
+     */
     public StarterKitList findStarterKitList(){
         return starterKitRepository.findStarterKitList();
     }
