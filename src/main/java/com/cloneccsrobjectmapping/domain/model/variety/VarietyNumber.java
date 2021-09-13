@@ -25,7 +25,7 @@ public class VarietyNumber {
 
     @Override
     public String toString() {
-        return "VarietyNumber{" + "value='" + value + '\'' + '}';
+        return value;
     }
 }
 

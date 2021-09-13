@@ -20,12 +20,8 @@ public class Variety {
         this.varietyName = varietyName;
     }
 
-    public VarietyName varietyName() {
-        return varietyName;
-    }
-
-    public VarietyNumber varietyNumber() {
-        return varietyNumber;
+    public String show(){
+        return String.format("%s [%s]",varietyName.value(),varietyNumber);
     }
 
     @Override

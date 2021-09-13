@@ -21,8 +21,8 @@ public class Row {
     Row() {
     }
 
-    public Variety variety() {
-        return variety;
+    public String variety() {
+        return variety.show();
     }
 
     public int numberOfSeed() {
@@ -32,6 +32,7 @@ public class Row {
     public String seedsPerCell() {
         return String.format("%d粒", seedsPerCell);
     }
+
 
     @Override
     public String toString() {

@@ -10,13 +10,31 @@
         <thead>
         <tr>
             <th>id</th>
+            <th>カバー</th>
             <th>種まき日</th>
+            <th>素材</th>
+            <th>特徴</th>
+            <th>列の構成</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="each:${kitList.asList()}">
             <td th:text="${each.starterKitNumber.value()}"></td>
             <td th:text="${each.when()}"></td>
+            <td th:text="${each.specification.covered()}"></td>
+            <td th:text="${each.specification.caseType()}"></td>
+            <td th:text="${each.specification.features()}"></td>
+            <td>
+                <table>
+                    <tbody>
+                    <tr th:each="row,rowStat:${each.specification.rows().asList()}">
+                        <td th:text="${rowStat.count}"></td>
+                        <td th:text="${row.variety()}"></td>
+                        <td th:text="${row.seedsPerCell()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
         </tr>
         </tbody>
     </table>

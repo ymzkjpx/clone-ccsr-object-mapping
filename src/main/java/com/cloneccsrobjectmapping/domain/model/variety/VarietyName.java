@@ -23,6 +23,6 @@ public class VarietyName {
 
     @Override
     public String toString() {
-        return "VarietyName{" + "value='" + value + '\'' + '}';
+        return value;
     }
 }
