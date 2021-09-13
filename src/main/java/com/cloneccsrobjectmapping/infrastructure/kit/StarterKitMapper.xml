@@ -6,8 +6,8 @@
     <resultMap id="findAllResult" type="com.cloneccsrobjectmapping.domain.model.kit.StarterKit">
         <id property="starterKitNumber.value" column="starterKitNumber.value"/>
         <result property="specification.dateOfSeed.value" column="specification.dateOfSeed.value"/>
-        <result property="specification.caseType" column="caseType" typeHandler="com.cloneccsrobjectmapping.infrastructure.typehandler.CaseTypeTypeHandler" />
-        <result property="specification.covered" column="covered" typeHandler="com.cloneccsrobjectmapping.infrastructure.typehandler.CoveredTypeHandler"/>
+        <result property="specification.caseType" column="caseType" />
+        <result property="specification.covered" column="covered" />
         <collection property="specification.rows.list" ofType="com.cloneccsrobjectmapping.domain.model.row.Row"
                     column="starterKitNumber.value"
                     select="com.cloneccsrobjectmapping.infrastructure.row.RowMapper.rows"/>

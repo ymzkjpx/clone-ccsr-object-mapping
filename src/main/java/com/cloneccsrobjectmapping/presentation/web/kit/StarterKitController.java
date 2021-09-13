@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.presentation.kit;
+package com.cloneccsrobjectmapping.presentation.web.kit;
 
 import com.cloneccsrobjectmapping.application.kit.StarterKitQueryService;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKitList;
