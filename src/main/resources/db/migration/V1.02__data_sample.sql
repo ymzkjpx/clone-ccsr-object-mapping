@@ -11,7 +11,7 @@ VALUES
 INSERT INTO 商品.栽培キット
 (キット番号, 種まき日, カバー, 素材)
 VALUES
-    ('KIT-X123-Y9XD', CURRENT_DATE - 10, 'NON_COVERED', 'プラスチック')
+    ('KIT-X123-Y9XD', CURRENT_DATE - 10, 'NON_COVERED', 'プラスチック製')
 ;
 
 INSERT INTO 商品.キットの特徴

@@ -6,7 +6,7 @@ VALUES ('COVERED'),
 ;
 INSERT INTO 商品.素材
 (素材)
-VALUES ('プラスチック'),
+VALUES ('プラスチック製'),
        ('木製')
 ;
 INSERT INTO 商品.特徴

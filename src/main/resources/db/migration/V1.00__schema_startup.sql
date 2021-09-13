@@ -8,7 +8,7 @@ CREATE TABLE 商品.カバー
 );
 CREATE TABLE 商品.素材
 (
-    素材 VARCHAR (6) PRIMARY KEY
+    素材 VARCHAR (7) PRIMARY KEY
 );
 CREATE TABLE 商品.特徴
 (
@@ -28,7 +28,7 @@ CREATE TABLE 商品.栽培キット
     キット番号 CHARACTER (13) PRIMARY KEY,
     種まき日 DATE NOT NULL,
     カバー CHAR (11) NOT NULL REFERENCES 商品.カバー,
-    素材 VARCHAR (6) NOT NULL REFERENCES 商品.素材
+    素材 VARCHAR (7) NOT NULL REFERENCES 商品.素材
 );
 CREATE TABLE 商品.キットの特徴
 (

@@ -3,7 +3,7 @@ package com.cloneccsrobjectmapping.domain.model.kit;
 import com.cloneccsrobjectmapping.domain.model.specification.Specification;
 
 public class StarterKit {
-    StarterKitNumber starterKitNumber;
+    StarterKitNumber starterKitNumber = StarterKitNumber.numbering();
     Specification specification;
 
     @Deprecated
@@ -25,6 +25,10 @@ public class StarterKit {
 
     public static StarterKit form(Specification other) {
         return new StarterKit(StarterKitNumber.numbering(), other);
+    }
+
+    public String when(){
+        return specification.when();
     }
 
     @Override

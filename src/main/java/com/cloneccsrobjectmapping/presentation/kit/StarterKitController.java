@@ -1,7 +1,7 @@
 package com.cloneccsrobjectmapping.presentation.kit;
 
 import com.cloneccsrobjectmapping.application.kit.StarterKitQueryService;
-import com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKiList;
+import com.cloneccsrobjectmapping.domain.model.kit.StarterKitList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +22,8 @@ public class StarterKitController {
 
     @GetMapping
     String listAll(Model model){
-        SingleStarterKiList kitList = starterKitQueryService.findAllSingle();
+        StarterKitList kitList = starterKitQueryService.findStarterKitList();
         model.addAttribute("kitList", kitList);
-//        model.addAttribute("kits", starterKitQueryService.findAll());
         return "kit/listAndForm";
     }
 

@@ -14,15 +14,16 @@ public class Specification {
     DateOfSeed dateOfSeed;
 
     @NotNull(message = "NULL are forbidden.")
-    CaseType caseType;
+    CaseType caseType = CaseType.木製;
 
-    Covered covered = Covered.NON_COVERED;
+    @NotNull(message = "NULL are forbidden.")
+    Covered covered = Covered.COVERED;
 
     @NotNull(message = "NULL are forbidden.")
     Features features;
 
     @Valid
-    Rows rows;
+    Rows rows = new Rows();
 
     @Deprecated
     Specification() {

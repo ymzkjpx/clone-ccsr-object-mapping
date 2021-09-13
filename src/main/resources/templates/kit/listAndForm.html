@@ -16,7 +16,7 @@
         <tbody>
         <tr th:each="each:${kitList.asList()}">
             <td th:text="${each.starterKitNumber.value()}"></td>
-            <td th:text="${each.dateOfSeed.when()}"></td>
+            <td th:text="${each.when()}"></td>
         </tr>
         </tbody>
     </table>

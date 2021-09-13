@@ -3,21 +3,36 @@
 
 <mapper namespace="com.cloneccsrobjectmapping.infrastructure.kit.StarterKitMapper">
 
-    <resultMap id="singleKit" type="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
+    <resultMap id="findAllResult" type="com.cloneccsrobjectmapping.domain.model.kit.StarterKit">
         <id property="starterKitNumber.value" column="starterKitNumber.value"/>
-        <collection property="rows.list" ofType="com.cloneccsrobjectmapping.domain.model.row.Row"
+        <result property="specification.dateOfSeed.value" column="specification.dateOfSeed.value"/>
+        <result property="specification.caseType" column="caseType" typeHandler="com.cloneccsrobjectmapping.infrastructure.typehandler.CaseTypeTypeHandler" />
+        <result property="specification.covered" column="covered" typeHandler="com.cloneccsrobjectmapping.infrastructure.typehandler.CoveredTypeHandler"/>
+        <collection property="specification.rows.list" ofType="com.cloneccsrobjectmapping.domain.model.row.Row"
                     column="starterKitNumber.value"
                     select="com.cloneccsrobjectmapping.infrastructure.row.RowMapper.rows"/>
-        <collection property="features.list" ofType="com.cloneccsrobjectmapping.domain.model.feature.Feature"
+        <collection property="specification.features.list"
+                    ofType="com.cloneccsrobjectmapping.domain.model.feature.Feature"
                     column="starterKitNumber.value"
                     select="com.cloneccsrobjectmapping.infrastructure.feature.FeatureMapper.features"/>
     </resultMap>
 
-    <select id="findAllSingle" resultMap="singleKit">
+    <select id="findStarterKitList" resultMap="findAllResult">
+        SELECT
+            キット.キット番号 AS "starterKitNumber.value"
+          , キット.種まき日 AS "specification.dateOfSeed.value"
+          , キット.素材 AS "caseType"
+          , キット.カバー AS "covered"
+        FROM
+            商品.栽培キット キット
+    </select>
+
+    <select id="test" resultType="com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit">
         SELECT
             キット.キット番号 AS "starterKitNumber.value"
           , キット.種まき日 AS "dateOfSeed.value"
-    , キット.カバー AS "covered"
+          , キット.素材 AS "caseType"
+          , キット.カバー AS "covered"
         FROM
             商品.栽培キット キット
     </select>

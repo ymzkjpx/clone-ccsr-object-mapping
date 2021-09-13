@@ -12,8 +12,7 @@ public class Rows {
     @Size(min = 1, max = 3, message = "Tolerance is between {min}~{max}")
     List<@Valid Row> list;
 
-    @Deprecated
-    Rows() {
+    public Rows() {
     }
 
     public Rows(List<Row> list) {

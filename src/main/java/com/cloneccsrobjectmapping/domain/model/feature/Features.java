@@ -15,4 +15,11 @@ public class Features {
     public List<Feature> asList(){
         return list;
     }
+
+    @Override
+    public String toString() {
+        return "Features{" +
+                "list=" + list +
+                '}';
+    }
 }

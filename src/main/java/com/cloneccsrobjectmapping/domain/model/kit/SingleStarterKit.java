@@ -1,7 +1,6 @@
 package com.cloneccsrobjectmapping.domain.model.kit;
 
-import com.cloneccsrobjectmapping.domain.model.feature.Features;
-import com.cloneccsrobjectmapping.domain.model.row.Rows;
+import com.cloneccsrobjectmapping.domain.model.specification.CaseType;
 import com.cloneccsrobjectmapping.domain.model.specification.Covered;
 import com.cloneccsrobjectmapping.domain.model.specification.DateOfSeed;
 
@@ -9,17 +8,16 @@ public class SingleStarterKit {
     StarterKitNumber starterKitNumber = StarterKitNumber.numbering();
     DateOfSeed dateOfSeed;
     Covered covered;
-    Rows rows;
-    Features features;
+    CaseType caseType;
 
     @Deprecated
     SingleStarterKit(){}
 
-    public SingleStarterKit(StarterKitNumber starterKitNumber, DateOfSeed dateOfSeed, Rows rows, Features features) {
+    public SingleStarterKit(StarterKitNumber starterKitNumber, DateOfSeed dateOfSeed, Covered covered, CaseType caseType) {
         this.starterKitNumber = starterKitNumber;
         this.dateOfSeed = dateOfSeed;
-        this.rows = rows;
-        this.features = features;
+        this.covered = covered;
+        this.caseType = caseType;
     }
 
     public StarterKitNumber starterKitNumber() {

@@ -1,10 +1,11 @@
 package com.cloneccsrobjectmapping.infrastructure.kit;
 
 import com.cloneccsrobjectmapping.application.kit.StarterKitRepository;
-import com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKiList;
 import com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKit;
+import com.cloneccsrobjectmapping.domain.model.kit.StarterKit;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKitList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,13 +18,12 @@ public class StarterKitDatasource implements StarterKitRepository {
         this.starterKitMapper = starterKitMapper;
     }
 
-    public StarterKitList findAll(){
-        return null;
-    }
-
     @Override
-    public SingleStarterKiList findAllSingle() {
-        List<SingleStarterKit> result = starterKitMapper.findAllSingle();
-        return SingleStarterKiList.from(result);
+    public StarterKitList findStarterKitList(){
+        SingleStarterKit singleStarterKit = starterKitMapper.test();
+        System.out.println(singleStarterKit);
+        List<StarterKit> list = starterKitMapper.findStarterKitList(new RowBounds(0,1));
+        if (list == null) return StarterKitList.empty();
+        return StarterKitList.from(list);
     }
 }

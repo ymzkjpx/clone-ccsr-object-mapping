@@ -1,6 +1,5 @@
 package com.cloneccsrobjectmapping.application.kit;
 
-import com.cloneccsrobjectmapping.domain.model.kit.SingleStarterKiList;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKitList;
 
 import org.springframework.stereotype.Service;
@@ -13,11 +12,7 @@ public class StarterKitQueryService {
         this.starterKitRepository = starterKitRepository;
     }
 
-    public StarterKitList findAll(){
-        return starterKitRepository.findAll();
-    }
-
-    public SingleStarterKiList findAllSingle(){
-        return starterKitRepository.findAllSingle();
+    public StarterKitList findStarterKitList(){
+        return starterKitRepository.findStarterKitList();
     }
 }
