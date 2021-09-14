@@ -12,4 +12,5 @@ import java.util.List;
 public interface StarterKitMapper {
     List<StarterKit> findStarterKitList(RowBounds rowBounds);
     SingleStarterKit test();
+    void register(StarterKit starterKit);
 }

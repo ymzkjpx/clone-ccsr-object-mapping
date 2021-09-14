@@ -7,6 +7,7 @@ import com.cloneccsrobjectmapping.domain.model.kit.StarterKitList;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,5 +24,11 @@ public class StarterKitDatasource implements StarterKitRepository {
         List<StarterKit> list = starterKitMapper.findStarterKitList(new RowBounds(0, KitListSize.MAX_BOUNDS));
         if (list == null) return StarterKitList.empty();
         return StarterKitList.from(list);
+    }
+
+    @Override
+    @Transactional
+    public void register(StarterKit starterKit) {
+        starterKitMapper.register(starterKit);
     }
 }

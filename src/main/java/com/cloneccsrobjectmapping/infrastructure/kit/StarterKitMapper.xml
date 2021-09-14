@@ -36,4 +36,8 @@
         FROM
             商品.栽培キット キット
     </select>
+
+    <insert id="register">
+        
+    </insert>
 </mapper>

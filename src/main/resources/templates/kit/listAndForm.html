@@ -46,8 +46,9 @@
         <h2>栽培キットの追加</h2>
         <form action="#" method="post" th:action="@{/kit}" th:object="${specification}">
             <div class="my-3">
-                <h4>植付日</h4>
-                <input id="seedOfDate" th:field="${specification.dateOfSeed.value}" type="date">
+                <h4><label th:for="specification.dateOfSeed.value">植付日</label></h4>
+                <input th:field="${specification.dateOfSeed.value}" type="date">
+                <mark><span th:errors="${specification.dateOfSeed.value}"></span></mark>
             </div>
             <div class="my-3">
                 <h4>カバー</h4>
@@ -71,6 +72,8 @@
                     <label class="form-check-label" th:for="${#ids.prev('features.list')}" th:text="${each}"/>
                 </div>
             </div>
+            <hr class="my-4">
+            <button class="btn btn-primary btn-lg w-50" type="submit">登録</button>
         </form>
     </article>
 </main>
