@@ -73,6 +73,10 @@ public class Specification {
         return covered.isCovered();
     }
 
+    public boolean hasFeatures(){
+        return features.hasFeature();
+    }
+
     public Specification addRow() {
         Rows result = rows.addRow();
         return withRows(result);

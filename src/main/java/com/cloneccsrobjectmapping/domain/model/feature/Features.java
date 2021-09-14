@@ -18,6 +18,10 @@ public class Features {
         return list;
     }
 
+    public boolean hasFeature(){
+        return (list.size() > 0);
+    }
+
     private String show() {
         List<String> result = list.stream().map(v -> v.toString()).collect(Collectors.toList());
         return result.toString();

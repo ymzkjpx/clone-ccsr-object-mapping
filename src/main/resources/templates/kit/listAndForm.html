@@ -50,6 +50,33 @@
                 <input th:field="${specification.dateOfSeed.value}" type="date">
                 <mark><span th:errors="${specification.dateOfSeed.value}"></span></mark>
             </div>
+            <div class="my-5">
+                <h4>栽培キットの内容</h4>
+                <table class="container table text-left pull-left align-middle">
+                    <thead>
+                    <tr>
+                        <td>順番</td>
+                        <td>品種</td>
+                        <td>種粒の数</td>
+                        <td><input name="addRow" type="button" value="➕"></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <select name="varietyNames">
+                                <option th:each="each:${allVarieties.asList()}" th:text="${each.varietyName.value}"
+                                        th:value="${each.varietyName.value}"/>
+                            </select>
+                        <td>10粒</td>
+                        <td><input name="addRow" type="button" value="❎"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
             <div class="my-3">
                 <h4>カバー</h4>
                 <input class="form-check-input" id="covered" type="checkbox">
@@ -73,7 +100,7 @@
                 </div>
             </div>
             <hr class="my-4">
-            <button class="btn btn-primary btn-lg w-50" type="submit">登録</button>
+            <button class="btn btn-primary btn-lg w-50" name="save" type="submit">登録</button>
         </form>
     </article>
 </main>

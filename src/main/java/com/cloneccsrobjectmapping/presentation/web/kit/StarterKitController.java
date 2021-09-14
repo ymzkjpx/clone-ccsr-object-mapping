@@ -2,11 +2,13 @@ package com.cloneccsrobjectmapping.presentation.web.kit;
 
 import com.cloneccsrobjectmapping.application.kit.StarterKitQueryService;
 import com.cloneccsrobjectmapping.application.kit.StarterKitRegisterService;
+import com.cloneccsrobjectmapping.application.variety.VarietyQueryService;
 import com.cloneccsrobjectmapping.domain.model.feature.Feature;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKit;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKitList;
 import com.cloneccsrobjectmapping.domain.model.specification.CaseType;
 import com.cloneccsrobjectmapping.domain.model.specification.Specification;
+import com.cloneccsrobjectmapping.domain.model.variety.Varieties;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 /**
  * ハーブ栽培キット管理画面
@@ -26,10 +31,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StarterKitController {
     StarterKitQueryService starterKitQueryService;
     StarterKitRegisterService starterKitRegisterService;
+    VarietyQueryService varietyQueryService;
 
-    public StarterKitController(StarterKitQueryService starterKitQueryService, StarterKitRegisterService starterKitRegisterService) {
+    public StarterKitController(StarterKitQueryService starterKitQueryService, StarterKitRegisterService starterKitRegisterService, VarietyQueryService varietyQueryService) {
         this.starterKitQueryService = starterKitQueryService;
         this.starterKitRegisterService = starterKitRegisterService;
+        this.varietyQueryService = varietyQueryService;
     }
 
     @ModelAttribute("starterKitList")
@@ -47,20 +54,32 @@ public class StarterKitController {
         return CaseType.values();
     }
 
+    @ModelAttribute("allVarieties")
+    Varieties allVarieties(){
+        return varietyQueryService.allVarieties();
+    }
+
     @GetMapping
     String listAll(@ModelAttribute("specification") Specification specification, Model model){
         model.addAttribute("specification", specification);
         return "kit/listAndForm";
     }
 
-    @PostMapping
-    String register(@ModelAttribute("specification") Specification specification, BindingResult bindingResult){
+    @PostMapping(params = "save")
+    String register(@Valid @ModelAttribute("specification") Specification specification, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "kit/listAndForm";
         };
         StarterKit starterKit = StarterKit.from(specification);
         starterKitRegisterService.register(starterKit);
-        return "redirect:/kit"
+        return "redirect:/kit";
+    }
+
+    @PostMapping(params = "addRow")
+    String addRow(@Valid @ModelAttribute("specification")Specification specification, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        Specification result = specification.addRow();
+        redirectAttributes.addFlashAttribute("specification", result);
+        return "redirect:/kit";
     }
 
     @InitBinder
