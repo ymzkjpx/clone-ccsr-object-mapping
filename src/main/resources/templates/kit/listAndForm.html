@@ -6,7 +6,7 @@
 <body>
 <main class="container">
     <article class="py-5 px-5">
-        <h4>管理数 : <span th:text="${kitList.count()}"/></h4>
+        <h4>管理数 : <span th:text="${starterKitList.count()}"/></h4>
         <table class="container table text-left pull-left align-middle">
             <thead>
             <tr>
@@ -19,7 +19,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="each:${kitList.asList()}">
+            <tr th:each="each:${starterKitList.asList()}">
                 <td th:text="${each.starterKitNumber.value()}"></td>
                 <td th:text="${each.when()}"></td>
                 <td th:text="${each.specification.covered()}"></td>
@@ -39,6 +39,39 @@
             </tr>
             </tbody>
         </table>
+    </article>
+
+    <article>
+        <hr class="my-4">
+        <h2>栽培キットの追加</h2>
+        <form action="#" method="post" th:action="@{/kit}" th:object="${specification}">
+            <div class="my-3">
+                <h4>植付日</h4>
+                <input id="seedOfDate" th:field="${specification.dateOfSeed.value}" type="date">
+            </div>
+            <div class="my-3">
+                <h4>カバー</h4>
+                <input class="form-check-input" id="covered" type="checkbox">
+                <label class="form-check-label" for="covered">カバー有り</label>
+            </div>
+            <div class="my-3">
+                <h4>ケースの材質</h4>
+                <div th:each="each:${allCaseTypes}">
+                    <input class="form-check-input" th:field="${specification.caseType}" th:value="${each}"
+                           type="radio">
+                    <label class="form-check-label" th:for="${#ids.prev('caseType')}"
+                           th:text="${each}"/>
+                </div>
+            </div>
+            <div class="my-3">
+                <h4>特徴</h4>
+                <div th:each="each:${allFeatures}">
+                    <input class="form-check-input" th:field="${specification.features.list}" th:value="${each}"
+                           type="checkbox">
+                    <label class="form-check-label" th:for="${#ids.prev('features.list')}" th:text="${each}"/>
+                </div>
+            </div>
+        </form>
     </article>
 </main>
 </body>

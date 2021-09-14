@@ -24,7 +24,7 @@ public class DateOfSeed {
         return value;
     }
 
-    public DateOfSeed today() {
+    public static DateOfSeed today() {
         return new DateOfSeed(LocalDate.now());
     }
 

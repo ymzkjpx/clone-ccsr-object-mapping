@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 public class Specification {
     @Valid
-    DateOfSeed dateOfSeed;
+    DateOfSeed dateOfSeed = DateOfSeed.today();
 
     @NotNull(message = "NULL are forbidden.")
     CaseType caseType = CaseType.木製;
@@ -67,6 +67,10 @@ public class Specification {
 
     public Specification withRows(Rows rows) {
         return new Specification(this.dateOfSeed, this.caseType, this.covered, this.features, rows);
+    }
+
+    public boolean hasCovered(){
+        return covered.isCovered();
     }
 
     public Specification addRow() {
