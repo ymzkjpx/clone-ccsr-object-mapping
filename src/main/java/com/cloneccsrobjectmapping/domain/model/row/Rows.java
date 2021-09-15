@@ -8,14 +8,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Rows {
-    @NotNull
-    @Size(min = 1, max = 3, message = "Tolerance is between {min}~{max}")
-    List<@Valid Row> list;
+    @NotNull(message = "必須")
+    @Size(min = 1, message = "少なくとも１列が必要")
+    @Size(max = 3 - 1, message = "多くて3列まで")
+    List<@Valid Row> list = new ArrayList<>();
 
     public Rows() {
     }
 
-    public Rows(List<Row> list) {
+    private Rows(List<Row> list) {
         this.list = list;
     }
 
@@ -23,9 +24,16 @@ public class Rows {
         return list;
     }
 
+//    public Rows addRow() {
+//        list.add(new Row());
+//        return new Rows(new ArrayList<>(list));
+//    }
+
     public Rows addRow() {
-        list.add(new Row());
-        return new Rows(new ArrayList<>(list));
+        List<Row> result = new ArrayList<>(list);
+        result.add(new Row());
+
+        return new Rows(result);
     }
 
     public Rows removeRow(int index) {

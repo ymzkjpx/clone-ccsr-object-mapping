@@ -4,6 +4,7 @@ import com.cloneccsrobjectmapping.domain.model.feature.Features;
 import com.cloneccsrobjectmapping.domain.model.row.Row;
 import com.cloneccsrobjectmapping.domain.model.row.Rows;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,10 +15,10 @@ public class Specification {
     DateOfSeed dateOfSeed = DateOfSeed.today();
 
     @NotNull(message = "NULL are forbidden.")
-    CaseType caseType = CaseType.木製;
+    Covered covered = Covered.COVERED;
 
     @NotNull(message = "NULL are forbidden.")
-    Covered covered = Covered.COVERED;
+    CaseType caseType = CaseType.木製;
 
     @NotNull(message = "NULL are forbidden.")
     Features features;
@@ -25,14 +26,13 @@ public class Specification {
     @Valid
     Rows rows = new Rows();
 
-    @Deprecated
-    Specification() {
+    private Specification() {
     }
 
-    public Specification(DateOfSeed dateOfSeed, CaseType caseType, Covered covered, Features features, Rows rows) {
+    private Specification(DateOfSeed dateOfSeed, Covered covered, CaseType caseType, Features features, Rows rows) {
         this.dateOfSeed = dateOfSeed;
-        this.caseType = caseType;
         this.covered = covered;
+        this.caseType = caseType;
         this.features = features;
         this.rows = rows;
     }
@@ -53,27 +53,23 @@ public class Specification {
         return features;
     }
 
-    public Rows rows() {
-        return rows;
-    }
-
-    public String when() {
-        return dateOfSeed().when();
-    }
-
-    public List<Row> asList() {
+    public List<Row> rows() {
         return rows.asList();
     }
 
-    public Specification withRows(Rows rows) {
-        return new Specification(this.dateOfSeed, this.caseType, this.covered, this.features, rows);
+    public String when() {
+        return dateOfSeed.when();
     }
 
-    public boolean hasCovered(){
+    private Specification withRows(Rows rows) {
+        return new Specification(this.dateOfSeed, this.covered, this.caseType, this.features, rows);
+    }
+
+    public boolean hasCovered() {
         return covered.isCovered();
     }
 
-    public boolean hasFeatures(){
+    public boolean hasFeatures() {
         return features.hasFeature();
     }
 

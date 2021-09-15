@@ -55,31 +55,34 @@ public class StarterKitController {
     }
 
     @ModelAttribute("allVarieties")
-    Varieties allVarieties(){
+    Varieties allVarieties() {
         return varietyQueryService.allVarieties();
     }
 
     @GetMapping
-    String listAll(@ModelAttribute("specification") Specification specification, Model model){
-        model.addAttribute("specification", specification);
+    String listAll(@ModelAttribute("specification") Specification specification) {
+        System.out.println(specification);
         return "kit/listAndForm";
     }
 
     @PostMapping(params = "save")
-    String register(@Valid @ModelAttribute("specification") Specification specification, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
+    String register(@Valid @ModelAttribute("specification") Specification specification, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "kit/listAndForm";
-        };
+        }
+        ;
         StarterKit starterKit = StarterKit.from(specification);
         starterKitRegisterService.register(starterKit);
         return "redirect:/kit";
     }
 
     @PostMapping(params = "addRow")
-    String addRow(@Valid @ModelAttribute("specification")Specification specification, BindingResult bindingResult, RedirectAttributes redirectAttributes){
+    String addRow(@ModelAttribute(
+            "specification") Specification specification, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) return "kit/listAndForm";
         Specification result = specification.addRow();
-        redirectAttributes.addFlashAttribute("specification", result);
-        return "redirect:/kit";
+        model.addAttribute("specification", result);
+        return "kit/listAndForm";
     }
 
     @InitBinder

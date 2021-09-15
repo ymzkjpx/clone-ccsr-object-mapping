@@ -28,7 +28,7 @@
                 <td>
                     <table>
                         <tbody>
-                        <tr th:each="row,rowStat:${each.specification.rows().asList()}">
+                        <tr th:each="row,rowStat:${each.specification.rows}">
                             <td th:text="${rowStat.count}"></td>
                             <td th:text="${row.variety()}"></td>
                             <td th:text="${row.seedsPerCell()}"></td>
@@ -41,12 +41,16 @@
         </table>
     </article>
 
-    <article>
+    <article class="py-5 px-5">
         <hr class="my-4">
         <h2>栽培キットの追加</h2>
         <form action="#" method="post" th:action="@{/kit}" th:object="${specification}">
+            <block th:if="${#fields.hasErrors()}">
+                <mark><span th:text="${#fields.allErrors()}"></span></mark>
+            </block>
             <div class="my-3">
                 <h4><label th:for="specification.dateOfSeed.value">植付日</label></h4>
+                <!--/*@thymesVar id="dateOfSeed" type="com.cloneccsrobjectmapping.domain.model.specification.DateOfSeed"*/-->
                 <input th:field="${specification.dateOfSeed.value}" type="date">
                 <mark><span th:errors="${specification.dateOfSeed.value}"></span></mark>
             </div>
@@ -55,22 +59,30 @@
                 <table class="container table text-left pull-left align-middle">
                     <thead>
                     <tr>
-                        <td>順番</td>
-                        <td>品種</td>
-                        <td>種粒の数</td>
-                        <td><input name="addRow" type="button" value="➕"></td>
+                        <th>順番</th>
+                        <th>品種</th>
+                        <th>種粒の数</th>
+                        <th>
+                            <button name="addRow" type="submit">➕</button>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
+                    <tr th:each="eachRow, stat:${specification.rows()}">
+                        <td th:text="${stat.count}">1</td>
                         <td>
-                            <select name="varietyNames">
-                                <option th:each="each:${allVarieties.asList()}" th:text="${each.varietyName.value}"
-                                        th:value="${each.varietyName.value}"/>
+                            <select th:field="${specification.rows.list[__${stat.index}__].variety.varietyNumber.value}">
+                                <option th:each="eachVariety:${allVarieties.asList()}"
+                                        th:text="${eachVariety.show()}"
+                                        th:value="${eachVariety.varietyNumber()}"/>
                             </select>
-                        <td>10粒</td>
-                        <td><input name="addRow" type="button" value="❎"></td>
+                        </td>
+                        <td>
+                            <intpu th:field="${specification.rows[__${stat.index}__].seedsPerCell}" type="text"/>
+                        </td>
+                        <td>
+                            <button name="removeRow" th:value="${stat.index}" type="submit">❎</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

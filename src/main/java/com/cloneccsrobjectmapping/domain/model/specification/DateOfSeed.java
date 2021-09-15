@@ -8,8 +8,8 @@ import java.time.format.DateTimeFormatter;
 import javax.validation.constraints.NotNull;
 
 public class DateOfSeed {
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @NotNull(message = "NULL are forbidden.")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     LocalDate value;
 
     @Deprecated
@@ -28,7 +28,7 @@ public class DateOfSeed {
         return new DateOfSeed(LocalDate.now());
     }
 
-    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M月d日");
     public String when() {
         return value.format(formatter);
     }
