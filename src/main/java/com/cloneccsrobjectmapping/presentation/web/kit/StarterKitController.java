@@ -7,10 +7,12 @@ import com.cloneccsrobjectmapping.domain.model.feature.Feature;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKit;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKitList;
 import com.cloneccsrobjectmapping.domain.model.row.validation.AddRow;
+import com.cloneccsrobjectmapping.domain.model.row.validation.RemoveRow;
 import com.cloneccsrobjectmapping.domain.model.specification.CaseType;
 import com.cloneccsrobjectmapping.domain.model.specification.Specification;
 import com.cloneccsrobjectmapping.domain.model.variety.Varieties;
 
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,9 +23,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * ハーブ栽培キット管理画面
@@ -81,6 +81,15 @@ public class StarterKitController {
             "specification") @Validated(AddRow.class) Specification specification, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) return "kit/listAndForm";
         Specification result = specification.addRow();
+        model.addAttribute("specification", result);
+        return "kit/listAndForm";
+    }
+
+    @PostMapping(params = "removeRow")
+    String removeRow(@ModelAttribute("specification") @Validated(
+            RemoveRow.class) Specification specification, BindingResult bindingResult, Model model, @RequestParam("removeRow") int index){
+        if(bindingResult.hasErrors())return "kit/listAndForm";
+        Specification result = specification.removeRow(index);
         model.addAttribute("specification", result);
         return "kit/listAndForm";
     }
