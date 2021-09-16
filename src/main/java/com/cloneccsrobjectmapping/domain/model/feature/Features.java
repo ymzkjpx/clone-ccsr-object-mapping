@@ -1,21 +1,26 @@
 package com.cloneccsrobjectmapping.domain.model.feature;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Features {
     List<Feature> list;
 
-    @Deprecated
-    Features() {
+    public Features() {
     }
 
-    public Features(List<Feature> list) {
+    private Features(List<Feature> list) {
         this.list = list;
     }
 
     public List<Feature> asList() {
         return list;
+    }
+
+    public static Features from(List<Feature> other){
+        return new Features(other);
     }
 
     public boolean hasFeature(){

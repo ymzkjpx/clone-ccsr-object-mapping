@@ -1,7 +1,8 @@
 package com.cloneccsrobjectmapping.domain.model.row;
 
 import com.cloneccsrobjectmapping.domain.model.variety.Variety;
-import com.google.errorprone.annotations.Var;
+
+import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
 
@@ -9,14 +10,14 @@ public class Row {
     @NotNull(message = "NULL are forbidden.")
     Variety variety;
 
-    //    @Range(min = 1, max = 20, message = "Tolerance is between 1~20.")
+    @Range(min = 1, max = 20, message = "Tolerance is between 1~20.")
     int seedsPerCell;
 
-    public String varietyNumber(){
+    public String varietyNumber() {
         return variety.varietyNumber().value();
     }
 
-    public Variety variety(){
+    public Variety variety() {
         return variety;
     }
 

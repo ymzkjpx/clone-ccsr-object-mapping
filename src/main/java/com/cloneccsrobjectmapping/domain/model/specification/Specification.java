@@ -4,7 +4,6 @@ import com.cloneccsrobjectmapping.domain.model.feature.Features;
 import com.cloneccsrobjectmapping.domain.model.row.Row;
 import com.cloneccsrobjectmapping.domain.model.row.Rows;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -21,7 +20,7 @@ public class Specification {
     CaseType caseType = CaseType.木製;
 
     @NotNull(message = "NULL are forbidden.")
-    Features features;
+    Features features = new Features();
 
     @Valid
     Rows rows = new Rows();

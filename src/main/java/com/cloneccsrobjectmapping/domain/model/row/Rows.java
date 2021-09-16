@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 public class Rows {
     @NotNull(message = "必須")
-    @Size(min = 1, message = "少なくとも１列が必要")
+//    @Size(min = 1, message = "少なくとも１列が必要")
     @Size(max = 3 - 1, message = "多くて3列まで")
     List<@Valid Row> list = new ArrayList<>();
 
