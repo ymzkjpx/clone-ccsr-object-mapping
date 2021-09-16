@@ -1,13 +1,12 @@
 package com.cloneccsrobjectmapping.domain.model.feature;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Features {
     List<Feature> list;
 
+    @Deprecated
     public Features() {
     }
 

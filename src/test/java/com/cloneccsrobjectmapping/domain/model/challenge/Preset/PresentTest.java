@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.model.Preset;
+package com.cloneccsrobjectmapping.domain.model.challenge.Preset;
 
 import org.junit.jupiter.api.Test;
 

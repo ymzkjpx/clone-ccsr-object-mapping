@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.model.Preset;
+package com.cloneccsrobjectmapping.domain.model.challenge.Preset;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +24,12 @@ public class FruitBucket {
     public FruitBucket addFruits(Fruit fruit) {
         list.add(fruit);
         return new FruitBucket(list);
+    }
+
+    @Override
+    public String toString() {
+        return "FruitBucket{" +
+                "list=" + list +
+                '}';
     }
 }

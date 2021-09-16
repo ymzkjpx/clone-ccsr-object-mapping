@@ -20,7 +20,7 @@ public class Specification {
     CaseType caseType = CaseType.木製;
 
     @NotNull(message = "NULL are forbidden.")
-    Features features = new Features();
+    Features features;
 
     @Valid
     Rows rows = new Rows();

@@ -1,4 +1,4 @@
-package com.cloneccsrobjectmapping.domain.model.Preset;
+package com.cloneccsrobjectmapping.domain.model.challenge.Preset;
 
 import java.util.List;
 import java.util.UUID;

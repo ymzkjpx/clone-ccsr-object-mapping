@@ -6,6 +6,7 @@ import com.cloneccsrobjectmapping.application.variety.VarietyQueryService;
 import com.cloneccsrobjectmapping.domain.model.feature.Feature;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKit;
 import com.cloneccsrobjectmapping.domain.model.kit.StarterKitList;
+import com.cloneccsrobjectmapping.domain.model.row.validation.AddRow;
 import com.cloneccsrobjectmapping.domain.model.specification.CaseType;
 import com.cloneccsrobjectmapping.domain.model.specification.Specification;
 import com.cloneccsrobjectmapping.domain.model.variety.Varieties;
@@ -61,17 +62,15 @@ public class StarterKitController {
     }
 
     @GetMapping
-    String listAll(@Validated @ModelAttribute("specification") Specification specification) {
-        System.out.println(specification);
+    String listAll(@ModelAttribute("specification") Specification specification) {
         return "kit/listAndForm";
     }
 
     @PostMapping(params = "save")
-    String register(@Valid @ModelAttribute("specification") Specification specification, BindingResult bindingResult) {
+    String register(@ModelAttribute("specification") @Validated Specification specification, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "kit/listAndForm";
         }
-        ;
         StarterKit starterKit = StarterKit.from(specification);
         starterKitRegisterService.register(starterKit);
         return "redirect:/kit";
@@ -79,7 +78,7 @@ public class StarterKitController {
 
     @PostMapping(params = "addRow")
     String addRow(@ModelAttribute(
-            "specification") Specification specification, BindingResult bindingResult, Model model) {
+            "specification") @Validated(AddRow.class) Specification specification, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) return "kit/listAndForm";
         Specification result = specification.addRow();
         model.addAttribute("specification", result);
