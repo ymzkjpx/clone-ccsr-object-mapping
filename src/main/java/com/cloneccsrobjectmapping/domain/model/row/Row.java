@@ -1,6 +1,7 @@
 package com.cloneccsrobjectmapping.domain.model.row;
 
 import com.cloneccsrobjectmapping.domain.model.variety.Variety;
+import com.google.errorprone.annotations.Var;
 
 import javax.validation.constraints.NotNull;
 
@@ -15,12 +16,12 @@ public class Row {
         return variety.varietyNumber().value();
     }
 
-    public String variety() {
-        return variety.show();
+    public Variety variety(){
+        return variety;
     }
 
-    public String seedsPerCell() {
-        return String.format("%d粒", seedsPerCell);
+    public int seedsPerCell() {
+        return seedsPerCell;
     }
 
     @Override

@@ -28,9 +28,9 @@
                 <td>
                     <table>
                         <tbody>
-                        <tr th:each="row,rowStat:${each.specification.rows}">
+                        <tr th:each="row,rowStat:${each.specification.rows()}">
                             <td th:text="${rowStat.count}"></td>
-                            <td th:text="${row.variety()}"></td>
+                            <td th:text="${row.variety.show()}"></td>
                             <td th:text="${row.seedsPerCell()}"></td>
                         </tr>
                         </tbody>
@@ -68,7 +68,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="eachRow, stat:${specification.rows()}">
+                    <tr th:each="row, stat:${specification.rows}">
                         <td th:text="${stat.count}">1</td>
                         <td>
                             <select th:field="${specification.rows.list[__${stat.index}__].variety.varietyNumber.value}">
@@ -78,8 +78,7 @@
                             </select>
                         </td>
                         <td>
-                            <intpu th:field="${specification.rows[__${stat.index}__].seedsPerCell}" type="text"/>
-                        </td>
+                            <input th:field="${specification.rows.list[__${stat.index}__].seedsPerCell}" type="text"/>
                         <td>
                             <button name="removeRow" th:value="${stat.index}" type="submit">❎</button>
                         </td>
@@ -87,6 +86,25 @@
                     </tbody>
                 </table>
             </div>
+
+<!--<tbody>-->
+<!--<tr>-->
+<!--    <td>1</td>-->
+<!--    <td>-->
+<!--        <select id="rows.list0.variety.varietyNumber.value" name="rows.list[0].variety.varietyNumber.value">-->
+<!--            <option value="VA-1234">ミント [VA-1234]</option>-->
+<!--            <option value="VA-X405">ローズマリー [VA-X405]</option>-->
+<!--            <option value="VA-040Z">タイム [VA-040Z]</option>-->
+<!--        </select>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--        <intpu field="0粒" type="text">-->
+<!--        </intpu></td>-->
+<!--    <td>-->
+<!--        <button name="removeRow" value="0" type="submit">❎</button>-->
+<!--    </td>-->
+<!--</tr>-->
+<!--</tbody>-->
 
 
             <div class="my-3">

@@ -24,16 +24,9 @@ public class Rows {
         return list;
     }
 
-//    public Rows addRow() {
-//        list.add(new Row());
-//        return new Rows(new ArrayList<>(list));
-//    }
-
     public Rows addRow() {
-        List<Row> result = new ArrayList<>(list);
-        result.add(new Row());
-
-        return new Rows(result);
+        list.add(new Row());
+        return new Rows(new ArrayList<>(list));
     }
 
     public Rows removeRow(int index) {
