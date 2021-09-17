@@ -10,6 +10,19 @@
             商品.列 列
                 INNER JOIN 商品.品種 品種
                     ON 列.品種番号 = 品種.品種番号
-        WHERE 列.キット番号 = #{value}
+        WHERE
+            列.キット番号 = #{value}
     </select>
+    <insert id="registerRows">
+        insert into 商品.列 (キット番号, 列番号, 品種番号, 種の数)
+        values
+        <foreach collection="rowList" item="row" index="index" separator=",">
+            (
+            #{starterKitNumber.value}
+            ,#{index}+1
+            ,#{row.variety.varietyNumber.value}
+            ,#{row.seedsPerCell}
+            )
+        </foreach>
+    </insert>
 </mapper>

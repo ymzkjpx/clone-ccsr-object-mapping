@@ -12,7 +12,6 @@ import com.cloneccsrobjectmapping.domain.model.specification.CaseType;
 import com.cloneccsrobjectmapping.domain.model.specification.Specification;
 import com.cloneccsrobjectmapping.domain.model.variety.Varieties;
 
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -68,6 +67,7 @@ public class StarterKitController {
 
     @PostMapping(params = "save")
     String register(@ModelAttribute("specification") @Validated Specification specification, BindingResult bindingResult) {
+        System.out.println(specification);
         if (bindingResult.hasErrors()) {
             return "kit/listAndForm";
         }

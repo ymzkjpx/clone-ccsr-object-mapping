@@ -14,10 +14,10 @@ public class Specification {
     DateOfSeed dateOfSeed = DateOfSeed.today();
 
     @NotNull(message = "NULL are forbidden.")
-    Covered covered = Covered.COVERED;
+    Covered covered = Covered.NON_COVERED;
 
     @NotNull(message = "NULL are forbidden.")
-    CaseType caseType = CaseType.木製;
+    CaseType caseType = CaseType.プラスチック製;
 
     @NotNull(message = "NULL are forbidden.")
     Features features;

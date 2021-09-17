@@ -10,4 +10,16 @@
             特徴.キット番号 = #{value}
         ;
     </select>
+    <insert id="registerFeature">
+        INSERT INTO
+        商品.キットの特徴 (キット番号 ,順序番号 ,特徴)
+        VALUES
+        <foreach collection="featureList" item="item" index="index" separator=",">
+            (
+            #{starterKitNumber.value}
+            ,#{index}+1
+            ,#{item}
+            )
+        </foreach>
+    </insert>
 </mapper>
