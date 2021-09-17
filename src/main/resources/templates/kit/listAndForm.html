@@ -10,7 +10,7 @@
         <table class="container table text-left pull-left align-middle">
             <thead>
             <tr>
-                <th>id</th>
+                <th hidden>id</th>
                 <th>種まき日</th>
                 <th>カバー</th>
                 <th>素材</th>
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
             <tr th:each="each:${starterKitList.asList()}">
-                <td th:text="${each.starterKitNumber.value()}"></td>
+                <td hidden th:text="${each.starterKitNumber.value()}"></td>
                 <td th:text="${each.when()}"></td>
                 <td th:text="${each.specification.coveredOfJapaneseName()}"></td>
                 <td th:text="${each.specification.caseType()}"></td>
@@ -43,9 +43,9 @@
                     <table>
                         <tbody>
                         <tr th:each="row,rowStat:${each.specification.rows()}">
-                            <td th:text="${rowStat.count}"></td>
+                            <td hidden th:text="${rowStat.count}"></td>
                             <td th:text="${row.variety.show()}"></td>
-                            <td th:text="${row.seedsPerCell()}"></td>
+                            <td th:text="${row.seedsPerCellWithUnit()}"></td>
                         </tr>
                         </tbody>
                     </table>

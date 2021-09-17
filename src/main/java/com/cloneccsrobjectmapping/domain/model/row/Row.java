@@ -25,6 +25,10 @@ public class Row {
         return seedsPerCell;
     }
 
+    public String seedsPerCellWithUnit(){
+        return seedsPerCell + "粒";
+    }
+
     @Override
     public String toString() {
         return "Row{" + "variety=" + variety + ", numberOfSeed=" + seedsPerCell + '}';

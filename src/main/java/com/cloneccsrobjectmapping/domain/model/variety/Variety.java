@@ -22,7 +22,7 @@ public class Variety {
     }
 
     public String show() {
-        return String.format("%s [%s]", varietyName.value(), varietyNumber);
+        return String.format("%s ", varietyName.value());
     }
 
     public VarietyName varietyName() {

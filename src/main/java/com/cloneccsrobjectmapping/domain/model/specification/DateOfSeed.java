@@ -28,7 +28,7 @@ public class DateOfSeed {
         return new DateOfSeed(LocalDate.now());
     }
 
-    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M月d日");
+    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     public String when() {
         return value.format(formatter);
     }
