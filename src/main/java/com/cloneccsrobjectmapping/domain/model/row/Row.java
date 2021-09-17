@@ -10,7 +10,7 @@ public class Row {
     @NotNull(message = "NULL are forbidden.")
     Variety variety;
 
-    @Range(min = 1, max = 20, message = "Tolerance is between 1~20.")
+    @Range(min = 1, max = 20, message = "The number of Seeds is limited to no more than 20 in a Cell.")
     int seedsPerCell;
 
     public String varietyNumber() {

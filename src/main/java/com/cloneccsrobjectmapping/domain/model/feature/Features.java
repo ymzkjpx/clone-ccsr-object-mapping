@@ -1,9 +1,7 @@
 package com.cloneccsrobjectmapping.domain.model.feature;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.validation.constraints.Size;
 
 public class Features {
     List<Feature> list;
@@ -29,7 +27,10 @@ public class Features {
     }
 
     private String show() {
-        List<String> result = list.stream().map(v -> v.toString()).collect(Collectors.toList());
+        List<String> result = new ArrayList<>();
+        for (Feature feature : list) {
+            result.add(feature.toString());
+        }
         return result.toString();
     }
 

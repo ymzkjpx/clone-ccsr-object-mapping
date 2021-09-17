@@ -11,8 +11,8 @@
             <thead>
             <tr>
                 <th>id</th>
-                <th>カバー</th>
                 <th>種まき日</th>
+                <th>カバー</th>
                 <th>素材</th>
                 <th>特徴</th>
                 <th>列の構成</th>
@@ -22,9 +22,23 @@
             <tr th:each="each:${starterKitList.asList()}">
                 <td th:text="${each.starterKitNumber.value()}"></td>
                 <td th:text="${each.when()}"></td>
-                <td th:text="${each.specification.covered()}"></td>
+                <td th:text="${each.specification.coveredOfJapaneseName()}"></td>
                 <td th:text="${each.specification.caseType()}"></td>
-                <td th:text="${each.specification.features()}"></td>
+                <block th:if="${each.specification.hasFeatures()}">
+                    <td>
+                        <table>
+                            <tbody>
+                            <tr th:each="feature:${each.specification().features().asList()}">
+                                <td th:text="${feature}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </block>
+                <block th:unless="${each.specification.hasFeatures()}">
+                    <td>-</td>
+                </block>
+                </td>
                 <td>
                     <table>
                         <tbody>
