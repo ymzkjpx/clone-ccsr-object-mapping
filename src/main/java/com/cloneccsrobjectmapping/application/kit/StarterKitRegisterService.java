@@ -13,9 +13,9 @@ public class StarterKitRegisterService {
         this.starterKitRepository = starterKitRepository;
     }
 
-    public void register(StarterKit starterKit){
+    public void register(StarterKit starterKit) {
         starterKitRepository.register(starterKit);
     }
 
-    
+
 }

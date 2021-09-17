@@ -11,7 +11,8 @@ public class SingleStarterKit {
     CaseType caseType;
 
     @Deprecated
-    SingleStarterKit(){}
+    SingleStarterKit() {
+    }
 
     public SingleStarterKit(StarterKitNumber starterKitNumber, DateOfSeed dateOfSeed, Covered covered, CaseType caseType) {
         this.starterKitNumber = starterKitNumber;

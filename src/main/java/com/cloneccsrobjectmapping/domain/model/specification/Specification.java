@@ -48,7 +48,7 @@ public class Specification {
         return covered;
     }
 
-    public String coveredOfJapaneseName(){
+    public String coveredOfJapaneseName() {
         return covered.japaneseName();
     }
 
@@ -56,7 +56,7 @@ public class Specification {
         return features;
     }
 
-    public String showFeatures(){
+    public String showFeatures() {
         return features.toString();
     }
 

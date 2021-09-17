@@ -7,7 +7,8 @@ public class VarietyNumber {
     String value;
 
     @Deprecated
-    VarietyNumber(){}
+    VarietyNumber() {
+    }
 
     public VarietyNumber(String value) {
         this.value = value;
@@ -18,7 +19,8 @@ public class VarietyNumber {
     }
 
     static String format = "VA-%s";
-    public static VarietyNumber numbering(){
+
+    public static VarietyNumber numbering() {
         String result = new VarietyNumberManager(format).nextNumber();
         return new VarietyNumber(result);
     }

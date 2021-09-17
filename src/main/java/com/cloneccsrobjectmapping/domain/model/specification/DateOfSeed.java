@@ -20,7 +20,7 @@ public class DateOfSeed {
         this.value = value;
     }
 
-    public LocalDate value(){
+    public LocalDate value() {
         return value;
     }
 
@@ -29,6 +29,7 @@ public class DateOfSeed {
     }
 
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+
     public String when() {
         return value.format(formatter);
     }

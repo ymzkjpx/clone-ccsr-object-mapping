@@ -25,7 +25,7 @@ public class Row {
         return seedsPerCell;
     }
 
-    public String seedsPerCellWithUnit(){
+    public String seedsPerCellWithUnit() {
         return seedsPerCell + "粒";
     }
 
