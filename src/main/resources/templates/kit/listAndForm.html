@@ -44,6 +44,7 @@
                         <tbody>
                         <tr th:each="row,rowStat:${each.specification.rows()}">
                             <td hidden th:text="${rowStat.count}"></td>
+                            <th hidden th:text="${row.variety().varietyNumber().value()}"></th>
                             <td th:text="${row.variety.show()}"></td>
                             <td th:text="${row.seedsPerCellWithUnit()}"></td>
                         </tr>
