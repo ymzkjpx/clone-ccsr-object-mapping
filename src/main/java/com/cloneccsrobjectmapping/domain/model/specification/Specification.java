@@ -1,6 +1,5 @@
 package com.cloneccsrobjectmapping.domain.model.specification;
 
-import com.cloneccsrobjectmapping.domain.model.feature.Feature;
 import com.cloneccsrobjectmapping.domain.model.feature.Features;
 import com.cloneccsrobjectmapping.domain.model.row.Row;
 import com.cloneccsrobjectmapping.domain.model.row.Rows;

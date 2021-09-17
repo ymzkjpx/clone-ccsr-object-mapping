@@ -12,6 +12,7 @@ import com.cloneccsrobjectmapping.domain.model.specification.CaseType;
 import com.cloneccsrobjectmapping.domain.model.specification.Specification;
 import com.cloneccsrobjectmapping.domain.model.variety.Varieties;
 
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -61,13 +62,15 @@ public class StarterKitController {
     }
 
     @GetMapping
-    String listAll(@ModelAttribute("specification") Specification specification) {
+    String listAll(@ModelAttribute("specification") Specification specification, Model model) {
+        Specification result = specification.addRow();
+        model.addAttribute("specification", result);
         return "kit/listAndForm";
     }
 
     @PostMapping(params = "save")
-    String register(@ModelAttribute("specification") @Validated Specification specification, BindingResult bindingResult) {
-        System.out.println(specification);
+    String register(@ModelAttribute(
+            "specification") @Validated Specification specification, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "kit/listAndForm";
         }
@@ -78,7 +81,8 @@ public class StarterKitController {
 
     @PostMapping(params = "addRow")
     String addRow(@ModelAttribute(
-            "specification") @Validated(AddRow.class) Specification specification, BindingResult bindingResult, Model model) {
+            "specification") @Validated(
+            AddRow.class) Specification specification, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) return "kit/listAndForm";
         Specification result = specification.addRow();
         model.addAttribute("specification", result);
@@ -87,8 +91,9 @@ public class StarterKitController {
 
     @PostMapping(params = "removeRow")
     String removeRow(@ModelAttribute("specification") @Validated(
-            RemoveRow.class) Specification specification, BindingResult bindingResult, Model model, @RequestParam("removeRow") int index){
-        if(bindingResult.hasErrors())return "kit/listAndForm";
+            RemoveRow.class) Specification specification, BindingResult bindingResult, Model model, @RequestParam(
+            "removeRow") int index) {
+        if (bindingResult.hasErrors()) return "kit/listAndForm";
         Specification result = specification.removeRow(index);
         model.addAttribute("specification", result);
         return "kit/listAndForm";
