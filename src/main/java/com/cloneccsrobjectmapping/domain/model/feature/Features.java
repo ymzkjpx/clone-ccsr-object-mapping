@@ -1,16 +1,16 @@
 package com.cloneccsrobjectmapping.domain.model.feature;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Features {
     List<Feature> list;
 
     @Deprecated
-    Features() {
+    public Features() {
     }
 
-    public Features(List<Feature> list) {
+    private Features(List<Feature> list) {
         this.list = list;
     }
 
@@ -18,8 +18,19 @@ public class Features {
         return list;
     }
 
+    public static Features from(List<Feature> other){
+        return new Features(other);
+    }
+
+    public boolean hasFeature(){
+        return (list.size() > 0);
+    }
+
     private String show() {
-        List<String> result = list.stream().map(v -> v.toString()).collect(Collectors.toList());
+        List<String> result = new ArrayList<>();
+        for (Feature feature : list) {
+            result.add(feature.toString());
+        }
         return result.toString();
     }
 

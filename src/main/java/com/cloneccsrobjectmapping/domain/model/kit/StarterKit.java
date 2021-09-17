@@ -23,7 +23,7 @@ public class StarterKit {
         return specification;
     }
 
-    public static StarterKit form(Specification other) {
+    public static StarterKit from(Specification other) {
         return new StarterKit(StarterKitNumber.numbering(), other);
     }
 

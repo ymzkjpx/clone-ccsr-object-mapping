@@ -6,32 +6,47 @@
 <body>
 <main class="container">
     <article class="py-5 px-5">
-        <h4>管理数 : <span th:text="${kitList.count()}"/></h4>
+        <h4>管理数 : <span th:text="${starterKitList.count()}"/></h4>
         <table class="container table text-left pull-left align-middle">
             <thead>
             <tr>
-                <th>id</th>
-                <th>カバー</th>
+                <th hidden>id</th>
                 <th>種まき日</th>
+                <th>カバー</th>
                 <th>素材</th>
                 <th>特徴</th>
                 <th>列の構成</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="each:${kitList.asList()}">
-                <td th:text="${each.starterKitNumber.value()}"></td>
+            <tr th:each="each:${starterKitList.asList()}">
+                <td hidden th:text="${each.starterKitNumber.value()}"></td>
                 <td th:text="${each.when()}"></td>
-                <td th:text="${each.specification.covered()}"></td>
+                <td th:text="${each.specification.coveredOfJapaneseName()}"></td>
                 <td th:text="${each.specification.caseType()}"></td>
-                <td th:text="${each.specification.features()}"></td>
+                <block th:if="${each.specification.hasFeatures()}">
+                    <td>
+                        <table>
+                            <tbody>
+                            <tr th:each="feature:${each.specification().features().asList()}">
+                                <td th:text="${feature}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </block>
+                <block th:unless="${each.specification.hasFeatures()}">
+                    <td>-</td>
+                </block>
+                </td>
                 <td>
                     <table>
                         <tbody>
-                        <tr th:each="row,rowStat:${each.specification.rows().asList()}">
-                            <td th:text="${rowStat.count}"></td>
-                            <td th:text="${row.variety()}"></td>
-                            <td th:text="${row.seedsPerCell()}"></td>
+                        <tr th:each="row,rowStat:${each.specification.rows()}">
+                            <td hidden th:text="${rowStat.count}"></td>
+                            <th hidden th:text="${row.variety().varietyNumber().value()}"></th>
+                            <td th:text="${row.variety.show()}"></td>
+                            <td th:text="${row.seedsPerCellWithUnit()}"></td>
                         </tr>
                         </tbody>
                     </table>
@@ -39,6 +54,78 @@
             </tr>
             </tbody>
         </table>
+    </article>
+
+    <article class="py-5 px-5">
+        <hr class="my-4">
+        <h2>栽培キットの追加</h2>
+        <form action="#" method="post" th:action="@{/kit}" th:object="${specification}">
+            <block th:if="${#fields.hasErrors()}">
+                <mark><span th:text="${#fields.allErrors()}"></span></mark>
+            </block>
+            <div class="my-3">
+                <h4><label th:for="specification.dateOfSeed.value">植付日</label></h4>
+                <!--/*@thymesVar id="dateOfSeed" type="com.cloneccsrobjectmapping.domain.model.specification.DateOfSeed"*/-->
+                <input th:field="${specification.dateOfSeed.value}" type="date">
+                <mark><span th:errors="${specification.dateOfSeed.value}"></span></mark>
+            </div>
+            <div class="my-5">
+                <h4>栽培キットの内容</h4>
+                <table class="container table text-left pull-left align-middle">
+                    <thead>
+                    <tr>
+                        <th>順番</th>
+                        <th>品種</th>
+                        <th>種粒の数</th>
+                        <th>
+                            <button name="addRow" type="submit">➕</button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="row, stat:${specification.rows}">
+                        <td th:text="${stat.count}">1</td>
+                        <td>
+                            <select th:field="${specification.rows.list[__${stat.index}__].variety.varietyNumber.value}">
+                                <option th:each="eachVariety:${allVarieties.asList()}"
+                                        th:text="${eachVariety.show()}"
+                                        th:value="${eachVariety.varietyNumber()}"/>
+                            </select>
+                        </td>
+                        <td>
+                            <input th:field="${specification.rows.list[__${stat.index}__].seedsPerCell}" type="text"/>
+                        <td>
+                            <button name="removeRow" th:value="${stat.index}" type="submit">❎</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="my-3">
+                <h4>カバー</h4>
+                <input class="form-check-input" id="covered" type="checkbox">
+                <label class="form-check-label" for="covered">カバー有り</label>
+            </div>
+            <div class="my-3">
+                <h4>ケースの材質</h4>
+                <div th:each="each:${allCaseTypes}">
+                    <input class="form-check-input" th:field="${specification.caseType}" th:value="${each}"
+                           type="radio">
+                    <label class="form-check-label" th:for="${#ids.prev('caseType')}"
+                           th:text="${each}"/>
+                </div>
+            </div>
+            <div class="my-3">
+                <h4>特徴</h4>
+                <div th:each="each:${allFeatures}">
+                    <input class="form-check-input" th:field="${specification.features.list}" th:value="${each}"
+                           type="checkbox">
+                    <label class="form-check-label" th:for="${#ids.prev('features.list')}" th:text="${each}"/>
+                </div>
+            </div>
+            <hr class="my-4">
+            <button class="btn btn-primary btn-lg w-50" name="save" type="submit">登録</button>
+        </form>
     </article>
 </main>
 </body>

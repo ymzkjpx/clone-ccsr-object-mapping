@@ -15,7 +15,7 @@ public class StarterKitQueryService {
     /**
      * 栽培キット一覧を取得する
      */
-    public StarterKitList findStarterKitList(){
+    public StarterKitList findStarterKitList() {
         return starterKitRepository.findStarterKitList();
     }
 }

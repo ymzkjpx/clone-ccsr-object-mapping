@@ -14,14 +14,24 @@ public class Variety {
     VarietyNumber varietyNumber = VarietyNumber.numbering();
 
     @Deprecated
-    Variety(){}
+    Variety() {
+    }
 
     public Variety(VarietyName varietyName) {
         this.varietyName = varietyName;
     }
 
-    public String show(){
-        return String.format("%s [%s]",varietyName.value(),varietyNumber);
+    public String show() {
+        return String.format("%s ", varietyName.value());
+    }
+
+    public VarietyName varietyName() {
+        return varietyName;
+    }
+
+    @NonNull
+    public VarietyNumber varietyNumber() {
+        return varietyNumber;
     }
 
     @Override

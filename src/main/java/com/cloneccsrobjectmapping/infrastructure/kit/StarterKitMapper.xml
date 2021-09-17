@@ -6,8 +6,8 @@
     <resultMap id="findAllResult" type="com.cloneccsrobjectmapping.domain.model.kit.StarterKit">
         <id property="starterKitNumber.value" column="starterKitNumber.value"/>
         <result property="specification.dateOfSeed.value" column="specification.dateOfSeed.value"/>
-        <result property="specification.caseType" column="caseType" />
-        <result property="specification.covered" column="covered" />
+        <result property="specification.caseType" column="caseType"/>
+        <result property="specification.covered" column="covered"/>
         <collection property="specification.rows.list" ofType="com.cloneccsrobjectmapping.domain.model.row.Row"
                     column="starterKitNumber.value"
                     select="com.cloneccsrobjectmapping.infrastructure.row.RowMapper.rows"/>
@@ -36,4 +36,16 @@
         FROM
             商品.栽培キット キット
     </select>
+
+    <insert id="register">
+        INSERT INTO
+            商品.栽培キット(キット番号 ,種まき日 ,カバー ,素材)
+        VALUES
+            (
+             #{starterKit.starterKitNumber.value}
+            ,#{starterKit.specification.dateOfSeed.value}
+            ,#{starterKit.specification.covered}
+            ,#{starterKit.specification.caseType}
+            );
+    </insert>
 </mapper>

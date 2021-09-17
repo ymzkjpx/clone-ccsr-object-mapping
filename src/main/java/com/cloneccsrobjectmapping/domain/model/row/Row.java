@@ -10,29 +10,24 @@ public class Row {
     @NotNull(message = "NULL are forbidden.")
     Variety variety;
 
-    @Range(min = 1, max = 20, message = "Tolerance is between 1~20.")
+    @Range(min = 1, max = 20, message = "The number of Seeds is limited to no more than 20 in a Cell.")
     int seedsPerCell;
 
-    /**
-     * RowクラスはRowによってのみ管理される.
-     * この仕様はめっちゃ伝わりづらいな.
-     * IMO: Row => Cellに名称変更.
-     */
-    Row() {
+    public String varietyNumber() {
+        return variety.varietyNumber().value();
     }
 
-    public String variety() {
-        return variety.show();
+    public Variety variety() {
+        return variety;
     }
 
-    public int numberOfSeed() {
+    public int seedsPerCell() {
         return seedsPerCell;
     }
 
-    public String seedsPerCell() {
-        return String.format("%d粒", seedsPerCell);
+    public String seedsPerCellWithUnit() {
+        return seedsPerCell + "粒";
     }
-
 
     @Override
     public String toString() {
